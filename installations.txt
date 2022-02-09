@@ -1,0 +1,42 @@
+jenikns:
+==========================================
+sudo wget -O /etc/yum.repos.d/jenkins.repohttps://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+amazon-linux-extras install epel -y
+amazon-linux-extras install java-openjdk11 -y
+yum upgrade
+sudo yum install git -y
+yum install jenkins -y
+systemctl start jenkins
+systemctl enable jenkins
+
+java:
+===========================
+amazon-linux-extras install epel -y
+amazon-linux-extras install java-openjdk11 -y
+
+
+maven:
+====================================
+#!/bin/bash
+sudo yum install git -y
+cd /opt/
+sudo wget https://dlcdn.apache.org/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.tar.gz
+sudo tar -xvzf apache-maven-3.8.4-bin.tar.gz
+sudo mv apache-maven-3.8.4 maven
+sudo rm -f apache-maven-3.8.4-bin.tar.gz
+
+tomcat:
+=======================================
+#!/bin/bash
+sudo amazon-linux-extras install epel -y 
+sudo amazon-linux-extras install java-openjdk11 -y
+cd /opt/
+sudo wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.58/bin/apache-tomcat-9.0.58-windows-x64.zip 
+sudo unzip apache-tomcat-9.0.58-windows-x64.zip
+sudo rm -f apache-tomcat-9.0.58-windows-x64.zip
+sudo mv apache-tomcat* tomcat
+sudo chmod -R 755 /opt/tomcat/
+sudo sh /opt/tomcat/bin/startup.sh 
+
+
